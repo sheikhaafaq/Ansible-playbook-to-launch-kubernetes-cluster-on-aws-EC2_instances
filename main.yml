@@ -1,0 +1,24 @@
+- hosts: localhost
+  vars_files:
+    - credentials.yml
+  tasks:
+                     
+    - name: Running EC2 Role
+      include_role:
+        name: ec2
+
+- hosts: master
+  tasks:
+    - name: Running k8s Master Role
+      include_role:
+        name: Masternode
+
+- hosts: slave
+  tasks:
+    - name: Running k8s Worker Role
+      include_role:
+        name: Workernode
+
+
+
+
